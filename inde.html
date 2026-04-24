@@ -414,6 +414,28 @@
   .cs-calmora .outcome-highlight::before { background: var(--accent3); }
   .outcome-highlight p { color: var(--text); font-size: 1rem; margin: 0; line-height: 1.8; }
 
+  .figma-btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--border);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+    margin-top: 2.5rem;
+    margin-right: 0.75rem;
+  }
+  .figma-btn svg { flex-shrink: 0; }
+  .cs-solar .figma-btn { color: var(--accent1); border-color: rgba(232,197,71,0.3); }
+  .cs-solar .figma-btn:hover { background: rgba(232,197,71,0.07); border-color: var(--accent1); }
+  .cs-medigo .figma-btn { color: var(--accent2); border-color: rgba(62,207,178,0.3); }
+  .cs-medigo .figma-btn:hover { background: rgba(62,207,178,0.07); border-color: var(--accent2); }
+  .cs-calmora .figma-btn { color: var(--accent3); border-color: rgba(184,212,160,0.3); }
+  .cs-calmora .figma-btn:hover { background: rgba(184,212,160,0.07); border-color: var(--accent3); }
+  .case-links-row { margin-top: 2.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
   /* ── CONTACT ── */
   #contact {
     border-top: 1px solid var(--border);
@@ -656,22 +678,22 @@
       <div class="feature-card">
         <div class="feature-icon">⚡</div>
         <h4>Energy Flow View</h4>
-        <p>A live diagram shows power moving from solar panels through the inverter into the home, with active paths highlighted as they happen. This was the most important screen to get right. Electricity is invisible, this diagram makes it visible. Users can finally see their system working rather than just being told it is.</p>
+        <p>A live diagram shows power moving from solar panels through the inverter into the home, with active paths highlighted as they happen. This was the most important screen to get right. Electricity is invisible — this diagram makes it visible. Users can finally see their system working rather than just being told it is.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">💰</div>
         <h4>Savings Screen</h4>
-        <p>R1,240 saved this month is the headline. Beneath it: "That's your grocery run for the month." The bar chart tracks Solar vs Grid usage across the year. Year total sits at R3,330 with 342 kWh of grid avoided. Kilowatt-hours are meaningless to most people, Rand saved and grocery comparisons are not.</p>
+        <p>R1,240 saved this month is the headline. Beneath it: "That's your grocery run for the month." The bar chart tracks Solar vs Grid usage across the year. Year total sits at R3,330 with 342 kWh of grid avoided. Kilowatt-hours are meaningless to most people — Rand saved and grocery comparisons are not.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🔔</div>
         <h4>Alerts and System Health</h4>
-        <p>Status badges for Solar, Battery, and Grid anchor the top of the Alerts screen. A timestamped log below covers everything from Eskom interruptions to overnight battery activity. Alert settings let users decide what they actually want to be notified about, the app doesn't assume one size fits all.</p>
+        <p>Status badges for Solar, Battery, and Grid anchor the top of the Alerts screen. A timestamped log below covers everything from Eskom interruptions to overnight battery activity. Alert settings let users decide what they actually want to be notified about — the app doesn't assume one size fits all.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🔌</div>
         <h4>Device Management</h4>
-        <p>The Devices screen lists the solar array, battery, and inverter with live status tags. Adding new hardware uses a QR code scan or manual serial number entry, straightforward enough that no one needs to call their installer to figure it out. System health shows 99.3% uptime so users have a running sense of reliability.</p>
+        <p>The Devices screen lists the solar array, battery, and inverter with live status tags. Adding new hardware uses a QR code scan or manual serial number entry — straightforward enough that no one needs to call their installer to figure it out. System health shows 99.3% uptime so users have a running sense of reliability.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🌱</div>
@@ -690,12 +712,19 @@
   <div class="case-section">
     <h3>The Hardest Part</h3>
     <p>The 24-hour constraint forced a real prioritisation decision. I could design everything at 60% quality, or I could design the critical path at 100% and let the rest follow naturally. I chose the critical path: home dashboard, energy flow, savings, and alerts. These are the four screens that answer the four questions people actually have. Everything else in the app exists because those four earned the user's trust.</p>
+    <p>The other challenge was making kilowatt-hours meaningful. kWh is the currency of energy but it means almost nothing in everyday life. The solution was to offer three translations — financial (Rand saved), relatable (grocery run), and environmental (CO₂ equivalent) — so every type of user has at least one lens that lands.</p>
   </div>
 
   <div class="case-section">
     <h3>Outcome</h3>
     <div class="outcome-highlight">
-      <p>GrideWise turns one of the most technically intimidating home systems into something people check the way they check the weather, quickly, casually, and with genuine confidence. The right information at the right moment is always more valuable than all the information all the time. That was the design principle, and every screen in the app honours it.</p>
+      <p>GrideWise turns one of the most technically intimidating home systems into something people check the way they check the weather — quickly, casually, and with genuine confidence. The right information at the right moment is always more valuable than all the information all the time. That was the design principle, and every screen in the app honours it.</p>
+    </div>
+    <div class="case-links-row">
+      <a class="figma-btn" href="https://www.figma.com/design/BczIOJYlt4uDwvQmvIsBYy/gridewise?node-id=0-1&t=NtRGI5bPXUspGFec-1" target="_blank">
+        <svg width="14" height="14" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 28.5A9.5 9.5 0 1 1 28.5 19 9.5 9.5 0 0 1 19 28.5z" fill="currentColor"/><path d="M9.5 57A9.5 9.5 0 0 0 19 47.5V38H9.5a9.5 9.5 0 0 0 0 19z" fill="currentColor" opacity=".7"/><path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5z" fill="currentColor" opacity=".8"/><path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5z" fill="currentColor" opacity=".6"/><path d="M19 0v19h9.5a9.5 9.5 0 0 0 0-19H19z" fill="currentColor" opacity=".9"/></svg>
+        View Figma File ↗
+      </a>
     </div>
   </div>
 
@@ -709,7 +738,7 @@
 
   <div class="case-eyebrow">Project 02 — Healthcare · Mobile Product Design</div>
   <h1 class="case-h1">Medi-go</h1>
-  <p class="case-intro">A mobile healthcare app designed to end the culture of 4am hospital queues, giving patients in South Africa the tools to book, view, and manage their appointments entirely on their own terms.</p>
+  <p class="case-intro">A mobile healthcare app designed to end the culture of 4am hospital queues — giving patients in South Africa the tools to book, view, and manage their appointments entirely on their own terms.</p>
 
   <div class="case-meta-row">
     <div class="meta-item"><label>Role</label><span>UX Research, UI Design, Prototyping</span></div>
@@ -720,7 +749,7 @@
 
   <div class="case-section">
     <h3>The Problem</h3>
-    <p>In South Africa, queuing at public and private healthcare facilities from as early as 4am just to secure a same-day appointment is a widespread, documented reality. Patients lose entire working days. Caregivers cannot leave their dependants at home. The most vulnerable people, those who can least afford to wait, are the ones most affected.</p>
+    <p>In South Africa, queuing at public and private healthcare facilities from as early as 4am just to secure a same-day appointment is a widespread, documented reality. Patients lose entire working days. Caregivers cannot leave their dependants at home. The most vulnerable people — those who can least afford to wait — are the ones most affected.</p>
     <p>This is not a staffing problem. It is a systems design problem. People are not being given the tools to claim a time that belongs to them before they even leave home. The problem statement that drove the entire project: <strong>patients across South Africa are forced to queue from 4am at healthcare facilities simply to book or attend an appointment, causing unnecessary suffering, lost income, and systemic inequity.</strong></p>
   </div>
 
@@ -748,12 +777,12 @@
 
   <div class="case-section">
     <h3>What the Numbers Confirmed</h3>
-    <p>The qualitative research was backed up by consistent patterns across interviews. Patients commonly begin queuing at 4am at public facilities to secure a same-day appointment. Of the patients interviewed, 87% said they would use a digital booking system if it genuinely guaranteed their appointment time. The average patient loses between four and eight hours per healthcare visit when you account for travel, queuing, and waiting after arrival, a full working day, gone.</p>
+    <p>The qualitative research was backed up by consistent patterns across interviews. Patients commonly begin queuing at 4am at public facilities to secure a same-day appointment. Of the patients interviewed, 87% said they would use a digital booking system if it genuinely guaranteed their appointment time. The average patient loses between four and eight hours per healthcare visit when you account for travel, queuing, and waiting after arrival — a full working day, gone.</p>
   </div>
 
   <div class="case-section">
     <h3>How the Research Shaped the Features</h3>
-    <p>Every feature in Medi-go maps directly to something a real user said they needed. The booking flow exists because Nomsa cannot call during working hours. The appointment detail screen shows the doctor's photo and bio because Themba wanted to know who he was seeing before he arrived. The medical records section exists because patients described arriving at appointments only to be told their results hadn't been transferred. The reschedule button on the appointment card exists because usability testing showed users expected it there, and they were right.</p>
+    <p>Every feature in Medi-go maps directly to something a real user said they needed. The booking flow exists because Nomsa cannot call during working hours. The appointment detail screen shows the doctor's photo and bio because Themba wanted to know who he was seeing before he arrived. The medical records section exists because patients described arriving at appointments only to be told their results hadn't been transferred. The reschedule button on the appointment card exists because usability testing showed users expected it there — and they were right.</p>
   </div>
 
   <div class="case-section">
@@ -762,33 +791,33 @@
     <div class="feature-grid">
       <div class="feature-card">
         <div class="feature-icon">🏥</div>
-        <h4>Home Your Health is in Harmony</h4>
-        <p>The home screen was designed around calm confidence. Upcoming appointments are prominent. Recent prescriptions are always visible. Quick actions are one tap away. The doctor profile card in the appointments section shows who the patient will see, when, and where, no uncertainty, no surprises.</p>
+        <h4>Home — Your Health is in Harmony</h4>
+        <p>The home screen was designed around calm confidence. Upcoming appointments are prominent. Recent prescriptions are always visible. Quick actions are one tap away. The doctor profile card in the appointments section shows who the patient will see, when, and where — no uncertainty, no surprises.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📅</div>
-        <h4>Booking Flow Schedule Your Visit</h4>
+        <h4>Booking Flow — Schedule Your Visit</h4>
         <p>The flow opens by asking "What brings you in today?" before anything else. This routes the patient toward the right specialist before they've had to think about location or time. Nearby clinics show distance and ratings. The calendar and time slots are designed for thumb use on mobile. The entire booking takes under 90 seconds.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📋</div>
         <h4>Medical Records</h4>
-        <p>Lab results, prescriptions, and imaging reports sit in a single filterable list, always sorted with the most recent first. Each record shows its status clearly. A Request Records option addresses the real-world scenario where a patient needs a physical copy for insurance or travel, something the system accommodates without making it feel like a bureaucratic process.</p>
+        <p>Lab results, prescriptions, and imaging reports sit in a single filterable list, always sorted with the most recent first. Each record shows its status clearly. A Request Records option addresses the real-world scenario where a patient needs a physical copy for insurance or travel — something the system accommodates without making it feel like a bureaucratic process.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🗓️</div>
         <h4>Your Schedule</h4>
-        <p>A clean chronological view of upcoming and past visits. Past reminders surface here too so patients never lose track of a follow-up vaccination or prescription that was recommended months ago. Each appointment card shows the doctor, time, and location at a glance, with reschedule available directly on the card, a change made specifically after usability testing.</p>
+        <p>A clean chronological view of upcoming and past visits. Past reminders surface here too so patients never lose track of a follow-up vaccination or prescription that was recommended months ago. Each appointment card shows the doctor, time, and location at a glance, with reschedule available directly on the card — a change made specifically after usability testing.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">💬</div>
         <h4>Doctor Chat</h4>
-        <p>A secure messaging interface that feels like a familiar chat app but carries clinical context. Lab reports attach as PDFs directly in the conversation. Request Refill and Schedule Visit shortcuts sit persistently in the message area, because these are the two most common things patients want to do when they message their doctor.</p>
+        <p>A secure messaging interface that feels like a familiar chat app but carries clinical context. Lab reports attach as PDFs directly in the conversation. Request Refill and Schedule Visit shortcuts sit persistently in the message area — because these are the two most common things patients want to do when they message their doctor.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">👤</div>
         <h4>User Profile</h4>
-        <p>Every piece of information that a receptionist would otherwise ask for on arrival lives here, personal details, medical aid number, plan type, emergency contacts, preferred facilities. Facilities integrated with Medi-go can pull this directly, making check-in faster for everyone. Outdated information is a genuine healthcare risk, so the update CTA is always visible.</p>
+        <p>Every piece of information that a receptionist would otherwise ask for on arrival lives here — personal details, medical aid number, plan type, emergency contacts, preferred facilities. Facilities integrated with Medi-go can pull this directly, making check-in faster for everyone. Outdated information is a genuine healthcare risk, so the update CTA is always visible.</p>
       </div>
     </div>
   </div>
@@ -796,7 +825,7 @@
   <div class="case-section">
     <h3>Usability Testing</h3>
     <p>Three participants representing both personas completed a moderated usability test using a high-fidelity Figma prototype. Each person was given four tasks to complete without any guidance.</p>
-    <p>Booking an appointment, rescheduling an existing one, finding a lab result, and locating the doctor profile, all four tasks were completed successfully by all three participants. The one friction point that surfaced: participants expected to reschedule directly from the appointment card rather than navigating into the detail screen first. That feedback was implemented in the final design. The Reschedule button now lives on the card itself.</p>
+    <p>Booking an appointment, rescheduling an existing one, finding a lab result, and locating the doctor profile — all four tasks were completed successfully by all three participants. The one friction point that surfaced: participants expected to reschedule directly from the appointment card rather than navigating into the detail screen first. That feedback was implemented in the final design. The Reschedule button now lives on the card itself.</p>
   </div>
 
   <div class="case-section">
@@ -806,7 +835,7 @@
 
   <div class="case-section">
     <h3>What I Would Change</h3>
-    <p>The current design assumes patients have reliable data connectivity. A future version should include an offline mode that caches appointment details and allows confirmation to sync when connectivity returns, particularly important for Nomsa and users like her in areas with inconsistent data access.</p>
+    <p>The current design assumes patients have reliable data connectivity. A future version should include an offline mode that caches appointment details and allows confirmation to sync when connectivity returns — particularly important for Nomsa and users like her in areas with inconsistent data access.</p>
     <p>I would also co-design the facility-side admin interface with actual reception staff, not just model it from the patient perspective. The queue problem is two-sided. Both sides need a tool built for how they actually work.</p>
   </div>
 
@@ -816,6 +845,12 @@
       <p>Medi-go removes the single biggest source of healthcare inequity that patients described in research: not knowing when they will be seen. A confirmed appointment time means patients arrive at the right time, not the earliest possible time. Nomsa gets her morning back. Themba knows exactly who he's walking in to see. That was the whole point.</p>
     </div>
     <p style="margin-top:1.5rem; color:var(--muted)">View the live case study: <a href="https://ayandas-portfolio-ui.netlify.app/medii" target="_blank" style="color:var(--accent2)">ayandas-portfolio-ui.netlify.app/medii</a></p>
+    <div class="case-links-row">
+      <a class="figma-btn" href="https://www.figma.com/design/I7OihFhMHLg8RZmUGSKIkF/medigo?node-id=0-1&t=NtRGI5bPXUspGFec-1" target="_blank">
+        <svg width="14" height="14" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 28.5A9.5 9.5 0 1 1 28.5 19 9.5 9.5 0 0 1 19 28.5z" fill="currentColor"/><path d="M9.5 57A9.5 9.5 0 0 0 19 47.5V38H9.5a9.5 9.5 0 0 0 0 19z" fill="currentColor" opacity=".7"/><path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5z" fill="currentColor" opacity=".8"/><path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5z" fill="currentColor" opacity=".6"/><path d="M19 0v19h9.5a9.5 9.5 0 0 0 0-19H19z" fill="currentColor" opacity=".9"/></svg>
+        View Figma File ↗
+      </a>
+    </div>
   </div>
 
 </div>
@@ -850,13 +885,13 @@
     <div class="feature-grid">
       <div class="feature-card">
         <div class="feature-icon">👩🏽‍💼</div>
-        <h4>Amahle, 27, Marketing Manager, Johannesburg</h4>
+        <h4>Amahle, 27 — Marketing Manager, Johannesburg</h4>
         <p>"I want to meditate but every app I download feels like another thing I have to maintain. I just need something that fits into my morning without me having to think about it."</p>
         <p style="margin-top:0.75rem; font-size:0.8rem; color:var(--muted)">Highly tech-comfortable. Has under 10 minutes daily. Wants to reduce stress without building a complex routine. Gets discouraged when she misses a day and the app makes her feel behind.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🎓</div>
-        <h4>Liyema, 21, BSc Student, Cape Town</h4>
+        <h4>Liyema, 21 — BSc Student, Cape Town</h4>
         <p>"Exam season completely breaks me. I know I need to take care of my mental health but I do not know where to start and I cannot afford therapy right now."</p>
         <p style="margin-top:0.75rem; font-size:0.8rem; color:var(--muted)">Needs support at 2am during study sessions, not 7am reminders. Cannot afford paid subscriptions. Feels judged by streak tracking. Wants to talk to something when she feels overwhelmed and alone.</p>
       </div>
@@ -867,12 +902,12 @@
 
   <div class="case-section">
     <h3>What the Research Confirmed</h3>
-    <p>Across four users surveyed, 75% found existing wellness apps too complicated to navigate. Every single participant needed sessions under five minutes to fit their real schedule. Half of them said they couldn't see whether anything they were doing was actually helping. These are not edge cases, they are the majority experience.</p>
+    <p>Across four users surveyed, 75% found existing wellness apps too complicated to navigate. Every single participant needed sessions under five minutes to fit their real schedule. Half of them said they couldn't see whether anything they were doing was actually helping. These are not edge cases — they are the majority experience.</p>
   </div>
 
   <div class="case-section">
     <h3>Feature Prioritisation</h3>
-    <p>I used an Eisenhower Matrix to map features across urgency and importance before touching any UI. The Do Now quadrant was clear: one-tap daily mood check-in, guided breathing exercises under five minutes, Lora the AI companion, and onboarding. Mood history visualisation and personalised recommendations were scheduled for a later version. Social sharing, leaderboards, streak counters, and community forums were eliminated entirely, not deferred, cut. Research showed these were the primary driver of guilt and app abandonment. They are the opposite of what Calmora is meant to do.</p>
+    <p>I used an Eisenhower Matrix to map features across urgency and importance before touching any UI. The Do Now quadrant was clear: one-tap daily mood check-in, guided breathing exercises under five minutes, Lora the AI companion, and onboarding. Mood history visualisation and personalised recommendations were scheduled for a later version. Social sharing, leaderboards, streak counters, and community forums were eliminated entirely — not deferred, cut. Research showed these were the primary driver of guilt and app abandonment. They are the opposite of what Calmora is meant to do.</p>
   </div>
 
   <div class="case-section">
@@ -887,12 +922,12 @@
       <div class="feature-card">
         <div class="feature-icon">🌿</div>
         <h4>Lora — AI Companion</h4>
-        <p>Lora is not a chatbot in the clinical sense. She opens with warmth, acknowledges stress without diagnosing it, and asks open questions. She listens first. After the conversation, she offers a relevant Toolbox exercise, not as a prescription, but as a gentle suggestion. She is always one tap away from the bottom navigation.</p>
+        <p>Lora is not a chatbot in the clinical sense. She opens with warmth, acknowledges stress without diagnosing it, and asks open questions. She listens first. After the conversation, she offers a relevant Toolbox exercise — not as a prescription, but as a gentle suggestion. She is always one tap away from the bottom navigation.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🧰</div>
         <h4>Coping Toolbox</h4>
-        <p>Deep Forest Breath, Grounding, Mindfulness, and the animated breathing circle are all accessible from one screen. Emergency Contact and Support Hotlines sit at the top of this screen intentionally, this is where someone opens the app in a crisis, and the most important options cannot be buried.</p>
+        <p>Deep Forest Breath, Grounding, Mindfulness, and the animated breathing circle are all accessible from one screen. Emergency Contact and Support Hotlines sit at the top of this screen intentionally — this is where someone opens the app in a crisis, and the most important options cannot be buried.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📖</div>
@@ -902,12 +937,12 @@
       <div class="feature-card">
         <div class="feature-icon">📊</div>
         <h4>Emotion Tracker</h4>
-        <p>A weekly mood overview with coloured dots for each day. Morning Peak and Focus Tip cards sit alongside the tracker, offering contextual encouragement without scoring or ranking. The tracker is framed as self-knowledge rather than self-monitoring, there is no correct answer to how you felt on Tuesday.</p>
+        <p>A weekly mood overview with coloured dots for each day. Morning Peak and Focus Tip cards sit alongside the tracker, offering contextual encouragement without scoring or ranking. The tracker is framed as self-knowledge rather than self-monitoring — there is no correct answer to how you felt on Tuesday.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">👤</div>
         <h4>Profile and Onboarding</h4>
-        <p>Onboarding uses nature photography and a warm wordmark to establish emotional tone before the user has completed a single action. The profile surface shows journal stats (128 total entries), most recent mood, and favourite toolbox exercises, celebrating presence without manufacturing pressure around consistency.</p>
+        <p>Onboarding uses nature photography and a warm wordmark to establish emotional tone before the user has completed a single action. The profile surface shows journal stats (128 total entries), most recent mood, and favourite toolbox exercises — celebrating presence without manufacturing pressure around consistency.</p>
       </div>
     </div>
   </div>
@@ -922,8 +957,8 @@
 
   <div class="case-section">
     <h3>Visual Design</h3>
-    <p>Sage green, warm cream, dusty rose, and soft terracotta. These are not random choices, they are colours associated with nature, grounding, and physical safety. They sit in deliberate contrast to the saturated blues and purples that dominate the wellness app space, which have started to feel clinical by overuse.</p>
-    <p>Illustrations use rounded, approachable characters rather than polished stock photography. The botanical visual headers in the Toolbox feel handmade, reinforcing the sense that someone who cares built this, not a growth team chasing retention metrics. Typography is soft and unhurried throughout. Generous whitespace in a wellness app is not wasted space. It is breathing room.</p>
+    <p>Sage green, warm cream, dusty rose, and soft terracotta. These are not random choices — they are colours associated with nature, grounding, and physical safety. They sit in deliberate contrast to the saturated blues and purples that dominate the wellness app space, which have started to feel clinical by overuse.</p>
+    <p>Illustrations use rounded, approachable characters rather than polished stock photography. The botanical visual headers in the Toolbox feel handmade — reinforcing the sense that someone who cares built this, not a growth team chasing retention metrics. Typography is soft and unhurried throughout. Generous whitespace in a wellness app is not wasted space. It is breathing room.</p>
   </div>
 
   <div class="case-section">
@@ -934,9 +969,15 @@
   <div class="case-section">
     <h3>Outcome</h3>
     <div class="outcome-highlight">
-      <p>Calmora is proof that wellness design does not have to choose between beautiful and genuinely useful. Every decision in the app, from Lora's conversational tone to where the Emergency Contact button lives to the deliberate absence of streaks, reflects a real understanding of who will open this app and what they will need when they do. It was designed for Amahle at 7am and for Liyema at 2am. Both of them deserve something that actually helps.</p>
+      <p>Calmora is proof that wellness design does not have to choose between beautiful and genuinely useful. Every decision in the app — from Lora's conversational tone to where the Emergency Contact button lives to the deliberate absence of streaks — reflects a real understanding of who will open this app and what they will need when they do. It was designed for Amahle at 7am and for Liyema at 2am. Both of them deserve something that actually helps.</p>
     </div>
     <p style="margin-top:1.5rem; color:var(--muted)">View the live case study: <a href="https://ayandas-portfolio-ui.netlify.app/calmora" target="_blank" style="color:var(--accent3)">ayandas-portfolio-ui.netlify.app/calmora</a></p>
+    <div class="case-links-row">
+      <a class="figma-btn" href="https://www.figma.com/design/PJHienuv9nxm18jiNBuLu5/calmora?node-id=0-1&t=NtRGI5bPXUspGFec-1" target="_blank">
+        <svg width="14" height="14" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 28.5A9.5 9.5 0 1 1 28.5 19 9.5 9.5 0 0 1 19 28.5z" fill="currentColor"/><path d="M9.5 57A9.5 9.5 0 0 0 19 47.5V38H9.5a9.5 9.5 0 0 0 0 19z" fill="currentColor" opacity=".7"/><path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5z" fill="currentColor" opacity=".8"/><path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5z" fill="currentColor" opacity=".6"/><path d="M19 0v19h9.5a9.5 9.5 0 0 0 0-19H19z" fill="currentColor" opacity=".9"/></svg>
+        View Figma File ↗
+      </a>
+    </div>
   </div>
 
 </div>
