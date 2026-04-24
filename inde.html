@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayanda S — UX/Product Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0f;
+    --surface: #141417;
+    --surface2: #1c1c21;
+    --border: rgba(255,255,255,0.07);
+    --text: #f0ede8;
+    --muted: #7a7870;
+    --accent1: #e8c547; /* solar gold */
+    --accent2: #3ecfb2; /* medigo teal */
+    --accent3: #b8d4a0; /* calmora sage */
+    --white: #ffffff;
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(13,13,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 6rem 3rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 40%, rgba(232,197,71,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 10% 70%, rgba(62,207,178,0.05) 0%, transparent 50%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 900px; }
+  .hero-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent1);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-label::before {
+    content: '';
+    display: block; width: 32px; height: 1px;
+    background: var(--accent1);
+  }
+  h1.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    margin-bottom: 2rem;
+    color: var(--white);
+  }
+  h1.hero-title span { color: var(--accent1); }
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 520px;
+    margin-bottom: 3rem;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    background: var(--accent1);
+    color: #0d0d0f;
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0.9rem 2rem;
+    letter-spacing: 0.02em;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .hero-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(232,197,71,0.3);
+  }
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 3rem;
+    font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .hero-scroll::after {
+    content: ''; display: block;
+    width: 40px; height: 1px; background: var(--muted);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+  @keyframes scrollLine {
+    0%,100% { transform: scaleX(1); transform-origin: left; }
+    50% { transform: scaleX(0.3); transform-origin: left; }
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 7rem 3rem; }
+  .section-label {
+    font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .section-label::before {
+    content: ''; display: block; width: 20px; height: 1px; background: var(--muted);
+  }
+  h2.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800; line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 3rem;
+  }
+
+  /* ── ABOUT ── */
+  #about { border-top: 1px solid var(--border); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+    max-width: 1100px;
+  }
+  .about-text p { color: var(--muted); margin-bottom: 1.25rem; font-size: 1.05rem; line-height: 1.85; }
+  .about-text p strong { color: var(--text); font-weight: 500; }
+  .about-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .stat-card {
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2.5rem; font-weight: 800;
+    color: var(--accent1);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1px;
+    border: 1px solid var(--border);
+    max-width: 900px;
+  }
+  .skill-item {
+    padding: 1.25rem 1.5rem;
+    background: var(--surface);
+    font-size: 0.85rem;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    transition: color 0.2s, background 0.2s;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .skill-item:hover { color: var(--text); background: var(--surface2); }
+  .skill-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── PROJECTS GRID ── */
+  #projects { border-top: 1px solid var(--border); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+    margin-top: 0;
+    border: 1px solid var(--border);
+  }
+  .project-card {
+    background: var(--surface);
+    padding: 2.5rem;
+    cursor: pointer;
+    transition: background 0.25s;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .project-card:hover { background: var(--surface2); }
+  .project-card:hover::before { transform: scaleX(1); }
+  .card-solar::before { background: var(--accent1); }
+  .card-medigo::before { background: var(--accent2); }
+  .card-calmora::before { background: var(--accent3); }
+
+  .card-tag {
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+  .tag-solar { color: var(--accent1); border-color: rgba(232,197,71,0.3); }
+  .tag-medigo { color: var(--accent2); border-color: rgba(62,207,178,0.3); }
+  .tag-calmora { color: var(--accent3); border-color: rgba(184,212,160,0.3); }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem; font-weight: 800;
+    color: var(--white); margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+  }
+  .card-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 2rem; }
+  .card-meta {
+    font-size: 0.75rem; color: var(--muted);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    display: flex; gap: 1.5rem;
+  }
+  .card-arrow {
+    position: absolute; bottom: 2.5rem; right: 2.5rem;
+    font-size: 1.2rem; color: var(--muted);
+    transition: transform 0.2s, color 0.2s;
+  }
+  .project-card:hover .card-arrow { transform: translate(4px, -4px); }
+  .card-solar:hover .card-arrow { color: var(--accent1); }
+  .card-medigo:hover .card-arrow { color: var(--accent2); }
+  .card-calmora:hover .card-arrow { color: var(--accent3); }
+
+  /* ── CASE STUDY OVERLAY ── */
+  .case-overlay {
+    position: fixed; inset: 0; z-index: 200;
+    background: var(--bg);
+    overflow-y: auto;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
+    opacity: 0;
+  }
+  .case-overlay.open {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .case-inner { max-width: 860px; margin: 0 auto; padding: 7rem 2rem 6rem; }
+
+  .case-close {
+    position: fixed; top: 1.5rem; right: 2rem;
+    z-index: 210;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--font-display);
+    font-size: 0.8rem; letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.25rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: none;
+  }
+  .case-close.visible { display: block; }
+  .case-close:hover { background: var(--border); }
+
+  .case-eyebrow {
+    font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .cs-solar .case-eyebrow { color: var(--accent1); }
+  .cs-medigo .case-eyebrow { color: var(--accent2); }
+  .cs-calmora .case-eyebrow { color: var(--accent3); }
+
+  .case-h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800; line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+  .case-intro {
+    font-size: 1.1rem; color: var(--muted);
+    line-height: 1.8; max-width: 680px;
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .case-meta-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 2rem; margin-bottom: 5rem;
+  }
+  .meta-item label {
+    display: block;
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 0.4rem;
+  }
+  .meta-item span { font-size: 0.9rem; color: var(--text); font-weight: 400; }
+
+  .case-section { margin-bottom: 4rem; }
+  .case-section h3 {
+    font-family: var(--font-display);
+    font-size: 1.4rem; font-weight: 700;
+    color: var(--white); margin-bottom: 1.25rem;
+    letter-spacing: -0.01em;
+  }
+  .case-section p {
+    color: var(--muted); line-height: 1.85; margin-bottom: 1rem;
+    font-size: 0.97rem;
+  }
+  .case-section p strong { color: var(--text); font-weight: 500; }
+  .case-section ul {
+    list-style: none; color: var(--muted);
+    display: flex; flex-direction: column; gap: 0.6rem;
+  }
+  .case-section ul li { font-size: 0.95rem; line-height: 1.7; padding-left: 1.25rem; position: relative; }
+  .case-section ul li::before {
+    content: '—';
+    position: absolute; left: 0;
+    color: var(--muted); opacity: 0.5;
+  }
+
+  .feature-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1rem; margin-top: 1.5rem;
+  }
+  .feature-card {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+  .feature-card h4 {
+    font-family: var(--font-display);
+    font-size: 0.9rem; font-weight: 700;
+    color: var(--white); margin-bottom: 0.5rem;
+  }
+  .feature-card p { font-size: 0.85rem; color: var(--muted); margin: 0; line-height: 1.6; }
+  .feature-icon { font-size: 1.25rem; margin-bottom: 0.75rem; }
+
+  .case-divider {
+    height: 1px; background: var(--border);
+    margin: 4rem 0;
+  }
+
+  .outcome-highlight {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2rem 2.5rem;
+    margin-top: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .outcome-highlight::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px;
+  }
+  .cs-solar .outcome-highlight::before { background: var(--accent1); }
+  .cs-medigo .outcome-highlight::before { background: var(--accent2); }
+  .cs-calmora .outcome-highlight::before { background: var(--accent3); }
+  .outcome-highlight p { color: var(--text); font-size: 1rem; margin: 0; line-height: 1.8; }
+
+  /* ── CONTACT ── */
+  #contact {
+    border-top: 1px solid var(--border);
+    display: flex; flex-direction: column; align-items: flex-start;
+  }
+  .contact-inner { max-width: 700px; }
+  .contact-links {
+    display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap;
+  }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .contact-link:hover { color: var(--text); border-color: var(--text); }
+
+  footer {
+    padding: 2rem 3rem;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  footer span { font-size: 0.8rem; color: var(--muted); }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    section { padding: 5rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .case-meta-row { grid-template-columns: 1fr 1fr; }
+    .feature-grid { grid-template-columns: 1fr; }
+    .hero-scroll { display: none; }
+    #hero { padding: 6rem 1.5rem 4rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Ayanda S.</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-label">UX / Product Designer · Based in South Africa</div>
+    <h1 class="hero-title">
+      Designing systems<br>people <span>actually</span><br>understand.
+    </h1>
+    <p class="hero-sub">
+      I turn complicated problems into clear, considered digital experiences — from energy dashboards to mental wellness apps.
+    </p>
+    <a href="#projects" class="hero-cta">View my work ↓</a>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text fade-up">
+      <div class="section-label">About</div>
+      <h2 class="section-title">A designer who thinks in systems.</h2>
+      <p>I'm a UX and product designer who believes the best design is <strong>invisible</strong> — it just makes things make sense. I focus on clarity, emotional resonance, and interfaces that reduce friction rather than add to it.</p>
+      <p>My work spans mobile-first products in energy tech, healthcare, and wellness. I'm drawn to spaces where <strong>complexity needs to be untangled</strong> — where a dashboard can replace anxiety with confidence, or a notification can replace confusion with calm.</p>
+      <p>I work fast, think visually, and care deeply about why decisions are made, not just how they look.</p>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Product Verticals</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">24h</div>
+          <div class="stat-label">Design Challenges</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Mobile-First</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">0</div>
+          <div class="stat-label">Cluttered UIs Shipped</div>
+        </div>
+      </div>
+    </div>
+    <div class="fade-up" style="transition-delay:0.15s">
+      <div class="section-label" style="margin-top: 4.5rem">Skills & Tools</div>
+      <div class="skills-grid" style="margin-top:1rem">
+        <div class="skill-item"><span class="skill-dot" style="background:var(--accent1)"></span>UX Research</div>
+        <div class="skill-item"><span class="skill-dot" style="background:var(--accent1)"></span>User Flows</div>
+        <div class="skill-item"><span class="skill-dot" style="background:var(--accent1)"></span>Wireframing</div>
+        <div class="skill-item"><span class="skill-dot" style="background:var(--accent1)"></span>Prototyping</div>
+        <div class="skill-item"><span class="skill-dot" style="background:var(--accent2)"></span>Figma</div>
+        <div class="skill-item"><span class="skill-dot" style="background:var(--accent2)"></span>Canva</div>
+        <div class="skill-item"><span class="skill-dot" style="background:var(--accent2)"></span>Google Slides</div>
+        <div class="skill-item"><span class="skill-dot" style="background:var(--accent2)"></span>Framer</div>
+        <div class="skill-item"><span class="skill-dot" style="background:var(--accent3)"></span>Visual Design</div>
+        <div class="skill-item"><span class="skill-dot" style="background:var(--accent3)"></span>Design Systems</div>
+        <div class="skill-item"><span class="skill-dot" style="background:var(--accent3)"></span>Mobile UI</div>
+        <div class="skill-item"><span class="skill-dot" style="background:var(--accent3)"></span>Information Arch.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label fade-up">Selected Work</div>
+  <h2 class="section-title fade-up">Three problems.<br>Three solutions.</h2>
+
+  <div class="projects-grid">
+
+    <!-- Card 1: GrideWise -->
+    <a class="project-card card-solar fade-up" onclick="openCase('solar'); return false;" href="#">
+      <div class="card-tag tag-solar">Energy Tech</div>
+      <div class="card-title">GrideWise</div>
+      <p class="card-desc">A home energy management app that makes solar, battery, and grid power legible for everyday homeowners — not just engineers.</p>
+      <div class="card-meta">
+        <span>Mobile App</span>
+        <span>24h Challenge</span>
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+    <!-- Card 2: Medigo -->
+    <a class="project-card card-medigo fade-up" onclick="openCase('medigo'); return false;" href="#">
+      <div class="card-tag tag-medigo">Healthcare</div>
+      <div class="card-title">Medigo</div>
+      <p class="card-desc">A personal healthcare companion that consolidates medical records, appointments, and doctor communication into one trusted space.</p>
+      <div class="card-meta">
+        <span>Mobile App</span>
+        <span>Product Design</span>
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+    <!-- Card 3: Calmora -->
+    <a class="project-card card-calmora fade-up" onclick="openCase('calmora'); return false;" href="#">
+      <div class="card-tag tag-calmora">Mental Wellness</div>
+      <div class="card-title">Calmora</div>
+      <p class="card-desc">A digital sanctuary for inner peace — journaling, breathing tools, emotion tracking, and a gentle AI companion built for real calm.</p>
+      <div class="card-meta">
+        <span>Mobile App</span>
+        <span>Wellness UX</span>
+      </div>
+      <span class="card-arrow">↗</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner fade-up">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Let's make<br>something good.</h2>
+    <p style="color:var(--muted); max-width:480px; font-size:1rem; line-height:1.8;">
+      I'm open to freelance projects, design critiques, and full-time opportunities. If you have a product that needs clarity — reach out.
+    </p>
+    <div class="contact-links">
+      <a href="https://ayandas-portfolio-ui.netlify.app" class="contact-link" target="_blank">→ View Live Portfolio</a>
+      <a href="mailto:yandaspaces@gmail.com" class="contact-link">→ Email Me</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Ayanda S. — UX/Product Designer</span>
+  <span>Johannesburg, ZA</span>
+</footer>
+
+
+<!-- ══════════════════════════════════════════
+     CASE STUDY OVERLAYS
+══════════════════════════════════════════ -->
+
+<button class="case-close" id="closeBtn" onclick="closeCase()">✕ Close</button>
+
+<!-- ── CASE 1: GRIDEWISE ── -->
+<div class="case-overlay cs-solar" id="case-solar">
+<div class="case-inner">
+
+  <div class="case-eyebrow">Project 01 — Energy Tech · 24-Hour Design Challenge</div>
+  <h1 class="case-h1">GrideWise</h1>
+  <p class="case-intro">A home energy management app that helps South African homeowners actually understand their solar systems — not just own them. Designed in 24 hours around one central truth: clarity is more powerful than data.</p>
+
+  <div class="case-meta-row">
+    <div class="meta-item"><label>Role</label><span>UX / Product Designer</span></div>
+    <div class="meta-item"><label>Timeline</label><span>24-Hour Sprint</span></div>
+    <div class="meta-item"><label>Platform</label><span>Mobile App</span></div>
+    <div class="meta-item"><label>Tools</label><span>Canva, Google Slides</span></div>
+  </div>
+
+  <div class="case-section">
+    <h3>The Problem</h3>
+    <p>Load-shedding pushed a generation of South African homeowners into solar. They spent tens of thousands on panels, inverters, and batteries — and then opened a monitoring app that looked like it was built for an electrician. Raw numbers, confusing abbreviations, zero context. The hardware worked. The understanding didn't follow.</p>
+    <p>The real pain wasn't the outages. It was the uncertainty that came after. Is my home running on solar right now, or quietly burning through the grid? Why is my battery at 30% when it should be full? Am I actually saving money, or just telling myself I am? People had invested in a solution they couldn't read.</p>
+  </div>
+
+  <div class="case-section">
+    <h3>Goal</h3>
+    <p>Design a mobile app that helps homeowners clearly understand where their power is coming from in real time, monitor their full energy system without needing a technical background, and see the genuine financial and environmental value of going solar.</p>
+  </div>
+
+  <div class="case-section">
+    <h3>Key Questions and Assumptions</h3>
+    <p>With a 24-hour clock running, I couldn't conduct full user research — but I could think carefully about who I was designing for. The questions I would ask real users: Who in the household actually checks the system? What triggers them to open the app — curiosity, or a problem? What's the one piece of information they wish they had instantly?</p>
+    <p>The assumptions I moved forward with: users are not technically minded, and that's not a failure on their part. Most check their system from a phone. They look most often during outages or when a bill arrives. The biggest thing they want is not more data — it's reassurance. <strong>Make them feel in control and everything else follows.</strong></p>
+  </div>
+
+  <div class="case-section">
+    <h3>Design Decisions</h3>
+    <p>Every screen was designed around a single mental mode. The home dashboard is for the quick daily check. The energy flow view is for when curiosity kicks in. The savings screen is for the moment you want proof it's working. The alerts screen is for when something goes wrong. None of them try to do all four things at once.</p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🏠</div>
+        <h4>Home Dashboard</h4>
+        <p>Solar, Battery, and Grid cards sit at the top at all times. Battery level, charge status, and this month's saving (R1,240) are visible before the user has scrolled a single pixel. The logic here was simple: if the first screen answers the three questions people actually have, they never need to go digging.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h4>Energy Flow View</h4>
+        <p>A live diagram shows power moving from solar panels through the inverter into the home, with active paths highlighted as they happen. This was the most important screen to get right. Electricity is invisible, this diagram makes it visible. Users can finally see their system working rather than just being told it is.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <h4>Savings Screen</h4>
+        <p>R1,240 saved this month is the headline. Beneath it: "That's your grocery run for the month." The bar chart tracks Solar vs Grid usage across the year. Year total sits at R3,330 with 342 kWh of grid avoided. Kilowatt-hours are meaningless to most people, Rand saved and grocery comparisons are not.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔔</div>
+        <h4>Alerts and System Health</h4>
+        <p>Status badges for Solar, Battery, and Grid anchor the top of the Alerts screen. A timestamped log below covers everything from Eskom interruptions to overnight battery activity. Alert settings let users decide what they actually want to be notified about, the app doesn't assume one size fits all.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔌</div>
+        <h4>Device Management</h4>
+        <p>The Devices screen lists the solar array, battery, and inverter with live status tags. Adding new hardware uses a QR code scan or manual serial number entry, straightforward enough that no one needs to call their installer to figure it out. System health shows 99.3% uptime so users have a running sense of reliability.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌱</div>
+        <h4>Carbon and Personalised Tips</h4>
+        <p>342 kg of CO₂ avoided this year. Eighteen trees planted. 1,420 km not driven. These equivalences matter because they give the data emotional weight. Tips are personalised: "Use heavy appliances before 5pm — estimated saving: R80/month." The app stops being a monitor and starts feeling like a coach.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="case-section">
+    <h3>Visual Design</h3>
+    <p>The dark theme was a deliberate choice. It mirrors the visual language of control panels and monitoring interfaces — serious without being cold. Amber and gold handle solar states. Green signals active and healthy. Red means something needs attention. The colour system does explanatory work so the copy doesn't have to.</p>
+    <p>Typography leans on contrast between bold numeric values and muted supporting text. Your eyes land on the number first and the context second — which is exactly the right reading order for a monitoring app. The bottom navigation (Home, Energy, Devices, Insights, Profile) keeps the architecture flat so nothing feels buried.</p>
+  </div>
+
+  <div class="case-section">
+    <h3>The Hardest Part</h3>
+    <p>The 24-hour constraint forced a real prioritisation decision. I could design everything at 60% quality, or I could design the critical path at 100% and let the rest follow naturally. I chose the critical path: home dashboard, energy flow, savings, and alerts. These are the four screens that answer the four questions people actually have. Everything else in the app exists because those four earned the user's trust.</p>
+  </div>
+
+  <div class="case-section">
+    <h3>Outcome</h3>
+    <div class="outcome-highlight">
+      <p>GrideWise turns one of the most technically intimidating home systems into something people check the way they check the weather, quickly, casually, and with genuine confidence. The right information at the right moment is always more valuable than all the information all the time. That was the design principle, and every screen in the app honours it.</p>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ── CASE 2: MEDIGO ── -->
+<div class="case-overlay cs-medigo" id="case-medigo">
+<div class="case-inner">
+
+  <div class="case-eyebrow">Project 02 — Healthcare · Mobile Product Design</div>
+  <h1 class="case-h1">Medi-go</h1>
+  <p class="case-intro">A mobile healthcare app designed to end the culture of 4am hospital queues, giving patients in South Africa the tools to book, view, and manage their appointments entirely on their own terms.</p>
+
+  <div class="case-meta-row">
+    <div class="meta-item"><label>Role</label><span>UX Research, UI Design, Prototyping</span></div>
+    <div class="meta-item"><label>Tools</label><span>Figma, FigJam</span></div>
+    <div class="meta-item"><label>Methods</label><span>User Interviews, Social Listening, Usability Testing</span></div>
+    <div class="meta-item"><label>Platform</label><span>iOS and Android</span></div>
+  </div>
+
+  <div class="case-section">
+    <h3>The Problem</h3>
+    <p>In South Africa, queuing at public and private healthcare facilities from as early as 4am just to secure a same-day appointment is a widespread, documented reality. Patients lose entire working days. Caregivers cannot leave their dependants at home. The most vulnerable people, those who can least afford to wait, are the ones most affected.</p>
+    <p>This is not a staffing problem. It is a systems design problem. People are not being given the tools to claim a time that belongs to them before they even leave home. The problem statement that drove the entire project: <strong>patients across South Africa are forced to queue from 4am at healthcare facilities simply to book or attend an appointment, causing unnecessary suffering, lost income, and systemic inequity.</strong></p>
+  </div>
+
+  <div class="case-section">
+    <h3>User Research</h3>
+    <p>I conducted user interviews and social listening across TikTok and Twitter, where conversations about the healthcare queue problem are loud, specific, and deeply felt. Two personas emerged from this research that represent the majority of affected users.</p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">👩🏾</div>
+        <h4>Nomsa M. — 34, Domestic Worker, Soweto</h4>
+        <p>"I have to be at the clinic by 4am or I will not be seen. My employer does not understand why I need a full day off just to see a doctor for 10 minutes."</p>
+        <p style="margin-top:0.75rem; font-size:0.8rem; color:var(--muted)">Public healthcare user. Data-conscious. Cannot miss work. Raising two young children who cannot sit in a queue before sunrise.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👨🏾</div>
+        <h4>Themba K. — 52, Small Business Owner, Durban</h4>
+        <p>"I saw people on TikTok talking about sleeping outside the hospital with blankets. I thought they were exaggerating. Then I needed an appointment myself."</p>
+        <p style="margin-top:0.75rem; font-size:0.8rem; color:var(--muted)">Private healthcare user. Tech comfortable. Needs transparency and confirmation. Cannot reschedule without calling during business hours — which he never has time for.</p>
+      </div>
+    </div>
+
+    <p style="margin-top:1.5rem">Nomsa and Themba represent two ends of the healthcare spectrum, but they share the same core need: <strong>a confirmed time slot they can trust before they leave home.</strong> Everything in Medi-go was built to deliver that.</p>
+  </div>
+
+  <div class="case-section">
+    <h3>What the Numbers Confirmed</h3>
+    <p>The qualitative research was backed up by consistent patterns across interviews. Patients commonly begin queuing at 4am at public facilities to secure a same-day appointment. Of the patients interviewed, 87% said they would use a digital booking system if it genuinely guaranteed their appointment time. The average patient loses between four and eight hours per healthcare visit when you account for travel, queuing, and waiting after arrival, a full working day, gone.</p>
+  </div>
+
+  <div class="case-section">
+    <h3>How the Research Shaped the Features</h3>
+    <p>Every feature in Medi-go maps directly to something a real user said they needed. The booking flow exists because Nomsa cannot call during working hours. The appointment detail screen shows the doctor's photo and bio because Themba wanted to know who he was seeing before he arrived. The medical records section exists because patients described arriving at appointments only to be told their results hadn't been transferred. The reschedule button on the appointment card exists because usability testing showed users expected it there, and they were right.</p>
+  </div>
+
+  <div class="case-section">
+    <h3>Design Decisions</h3>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🏥</div>
+        <h4>Home Your Health is in Harmony</h4>
+        <p>The home screen was designed around calm confidence. Upcoming appointments are prominent. Recent prescriptions are always visible. Quick actions are one tap away. The doctor profile card in the appointments section shows who the patient will see, when, and where, no uncertainty, no surprises.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📅</div>
+        <h4>Booking Flow Schedule Your Visit</h4>
+        <p>The flow opens by asking "What brings you in today?" before anything else. This routes the patient toward the right specialist before they've had to think about location or time. Nearby clinics show distance and ratings. The calendar and time slots are designed for thumb use on mobile. The entire booking takes under 90 seconds.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h4>Medical Records</h4>
+        <p>Lab results, prescriptions, and imaging reports sit in a single filterable list, always sorted with the most recent first. Each record shows its status clearly. A Request Records option addresses the real-world scenario where a patient needs a physical copy for insurance or travel, something the system accommodates without making it feel like a bureaucratic process.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🗓️</div>
+        <h4>Your Schedule</h4>
+        <p>A clean chronological view of upcoming and past visits. Past reminders surface here too so patients never lose track of a follow-up vaccination or prescription that was recommended months ago. Each appointment card shows the doctor, time, and location at a glance, with reschedule available directly on the card, a change made specifically after usability testing.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <h4>Doctor Chat</h4>
+        <p>A secure messaging interface that feels like a familiar chat app but carries clinical context. Lab reports attach as PDFs directly in the conversation. Request Refill and Schedule Visit shortcuts sit persistently in the message area, because these are the two most common things patients want to do when they message their doctor.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👤</div>
+        <h4>User Profile</h4>
+        <p>Every piece of information that a receptionist would otherwise ask for on arrival lives here, personal details, medical aid number, plan type, emergency contacts, preferred facilities. Facilities integrated with Medi-go can pull this directly, making check-in faster for everyone. Outdated information is a genuine healthcare risk, so the update CTA is always visible.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="case-section">
+    <h3>Usability Testing</h3>
+    <p>Three participants representing both personas completed a moderated usability test using a high-fidelity Figma prototype. Each person was given four tasks to complete without any guidance.</p>
+    <p>Booking an appointment, rescheduling an existing one, finding a lab result, and locating the doctor profile, all four tasks were completed successfully by all three participants. The one friction point that surfaced: participants expected to reschedule directly from the appointment card rather than navigating into the detail screen first. That feedback was implemented in the final design. The Reschedule button now lives on the card itself.</p>
+  </div>
+
+  <div class="case-section">
+    <h3>Visual Design</h3>
+    <p>Light mode was the right choice for healthcare. Cleanliness, legibility, and a sense of institutional trust are all served by light surfaces. Teal is the primary action colour — used for confirmed states, CTAs, and navigation highlights. Doctor and specialist cards use actual photos, which was a deliberate decision to humanise a system that often feels deeply anonymous. Iconography is functional and clear throughout, never decorative.</p>
+  </div>
+
+  <div class="case-section">
+    <h3>What I Would Change</h3>
+    <p>The current design assumes patients have reliable data connectivity. A future version should include an offline mode that caches appointment details and allows confirmation to sync when connectivity returns, particularly important for Nomsa and users like her in areas with inconsistent data access.</p>
+    <p>I would also co-design the facility-side admin interface with actual reception staff, not just model it from the patient perspective. The queue problem is two-sided. Both sides need a tool built for how they actually work.</p>
+  </div>
+
+  <div class="case-section">
+    <h3>Outcome</h3>
+    <div class="outcome-highlight">
+      <p>Medi-go removes the single biggest source of healthcare inequity that patients described in research: not knowing when they will be seen. A confirmed appointment time means patients arrive at the right time, not the earliest possible time. Nomsa gets her morning back. Themba knows exactly who he's walking in to see. That was the whole point.</p>
+    </div>
+    <p style="margin-top:1.5rem; color:var(--muted)">View the live case study: <a href="https://ayandas-portfolio-ui.netlify.app/medii" target="_blank" style="color:var(--accent2)">ayandas-portfolio-ui.netlify.app/medii</a></p>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ── CASE 3: CALMORA ── -->
+<div class="case-overlay cs-calmora" id="case-calmora">
+<div class="case-inner">
+
+  <div class="case-eyebrow">Project 03 — Mental Wellness · Mobile Product Design</div>
+  <h1 class="case-h1">Calmora</h1>
+  <p class="case-intro">A mindfulness and relaxation app designed to help users manage stress through guided breathing, mood tracking, journaling, and an AI companion named Lora — built for the people who need it most, not just the people who are already doing well.</p>
+
+  <div class="case-meta-row">
+    <div class="meta-item"><label>Role</label><span>UX Research, UI Design, Prototyping</span></div>
+    <div class="meta-item"><label>Tools</label><span>Figma</span></div>
+    <div class="meta-item"><label>Methods</label><span>User Interviews, Surveys</span></div>
+    <div class="meta-item"><label>Platform</label><span>Mobile App (iOS)</span></div>
+  </div>
+
+  <div class="case-section">
+    <h3>The Problem</h3>
+    <p>Many people struggle with stress but find existing wellness apps overwhelming or difficult to use. The irony is real: the apps designed to reduce anxiety are adding to it. Sessions are too long to fit into a real day. Streak counters punish people for missing a day. Features pile up until the home screen looks like a content catalogue. And at 2am when someone genuinely needs support, the app sends a cheerful morning reminder instead.</p>
+    <p>Calmora was built around a simple alternative: <strong>meet users where they are, not where the app expects them to be.</strong></p>
+  </div>
+
+  <div class="case-section">
+    <h3>User Research</h3>
+    <p>Through user interviews and surveys, two primary personas shaped every design decision from the first wireframe to the final screen.</p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">👩🏽‍💼</div>
+        <h4>Amahle, 27, Marketing Manager, Johannesburg</h4>
+        <p>"I want to meditate but every app I download feels like another thing I have to maintain. I just need something that fits into my morning without me having to think about it."</p>
+        <p style="margin-top:0.75rem; font-size:0.8rem; color:var(--muted)">Highly tech-comfortable. Has under 10 minutes daily. Wants to reduce stress without building a complex routine. Gets discouraged when she misses a day and the app makes her feel behind.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎓</div>
+        <h4>Liyema, 21, BSc Student, Cape Town</h4>
+        <p>"Exam season completely breaks me. I know I need to take care of my mental health but I do not know where to start and I cannot afford therapy right now."</p>
+        <p style="margin-top:0.75rem; font-size:0.8rem; color:var(--muted)">Needs support at 2am during study sessions, not 7am reminders. Cannot afford paid subscriptions. Feels judged by streak tracking. Wants to talk to something when she feels overwhelmed and alone.</p>
+      </div>
+    </div>
+
+    <p style="margin-top:1.5rem">Amahle needs five minutes and no friction. Liyema needs someone to talk to at midnight. Calmora had to work for both of them — which meant designing for the hardest version of the use case, not the most convenient one.</p>
+  </div>
+
+  <div class="case-section">
+    <h3>What the Research Confirmed</h3>
+    <p>Across four users surveyed, 75% found existing wellness apps too complicated to navigate. Every single participant needed sessions under five minutes to fit their real schedule. Half of them said they couldn't see whether anything they were doing was actually helping. These are not edge cases, they are the majority experience.</p>
+  </div>
+
+  <div class="case-section">
+    <h3>Feature Prioritisation</h3>
+    <p>I used an Eisenhower Matrix to map features across urgency and importance before touching any UI. The Do Now quadrant was clear: one-tap daily mood check-in, guided breathing exercises under five minutes, Lora the AI companion, and onboarding. Mood history visualisation and personalised recommendations were scheduled for a later version. Social sharing, leaderboards, streak counters, and community forums were eliminated entirely, not deferred, cut. Research showed these were the primary driver of guilt and app abandonment. They are the opposite of what Calmora is meant to do.</p>
+  </div>
+
+  <div class="case-section">
+    <h3>Design Decisions</h3>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🏡</div>
+        <h4>Home Screen</h4>
+        <p>Opens with "Welcome Back!" and immediately asks "How are you feeling today?" using five emoji states. Below that: Coping Toolbox, Managing Workload, and a Calmora audio player for ambient sound. The home screen takes no time to figure out and offers immediate relief without any navigation.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌿</div>
+        <h4>Lora — AI Companion</h4>
+        <p>Lora is not a chatbot in the clinical sense. She opens with warmth, acknowledges stress without diagnosing it, and asks open questions. She listens first. After the conversation, she offers a relevant Toolbox exercise, not as a prescription, but as a gentle suggestion. She is always one tap away from the bottom navigation.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧰</div>
+        <h4>Coping Toolbox</h4>
+        <p>Deep Forest Breath, Grounding, Mindfulness, and the animated breathing circle are all accessible from one screen. Emergency Contact and Support Hotlines sit at the top of this screen intentionally, this is where someone opens the app in a crisis, and the most important options cannot be buried.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📖</div>
+        <h4>Quiet Reflections Journal</h4>
+        <p>Past entries appear with an emotional tag and a readable excerpt. "Begin a new entry" is prominent but never urgent. The design preserves the intimate quality of journaling — it does not turn it into a data logging exercise or prompt users to rate their day out of ten.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h4>Emotion Tracker</h4>
+        <p>A weekly mood overview with coloured dots for each day. Morning Peak and Focus Tip cards sit alongside the tracker, offering contextual encouragement without scoring or ranking. The tracker is framed as self-knowledge rather than self-monitoring, there is no correct answer to how you felt on Tuesday.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👤</div>
+        <h4>Profile and Onboarding</h4>
+        <p>Onboarding uses nature photography and a warm wordmark to establish emotional tone before the user has completed a single action. The profile surface shows journal stats (128 total entries), most recent mood, and favourite toolbox exercises, celebrating presence without manufacturing pressure around consistency.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="case-section">
+    <h3>Task Flows</h3>
+    <p>Two core user journeys were mapped end-to-end before any screen was designed.</p>
+    <p>The first: track and manage an emotion. Home screen mood check-in, tap an emoji, land on the Tracker with a weekly overview, low mood surfaces the SOs screen with Breathe and Emergency Contact options, tap Breathe to reach the Toolbox, and begin Deep Forest Breath. The whole flow takes under 90 seconds from the home screen to a breathing guide running on screen.</p>
+    <p>The second: speak to Lora. User opens the app feeling overwhelmed, spots the Chat icon in the bottom navigation, Lora greets them warmly and invites them to share, the user vents freely, Lora responds with empathy and no clinical framing, and after the conversation Lora suggests a breathing exercise with a direct link to the Toolbox. The user never has to navigate anywhere on their own.</p>
+    <p>Both flows were designed so that reaching support requires no orientation, no decision-making under pressure, and no app knowledge. The person in crisis should never have to think about how to use the app.</p>
+  </div>
+
+  <div class="case-section">
+    <h3>Visual Design</h3>
+    <p>Sage green, warm cream, dusty rose, and soft terracotta. These are not random choices, they are colours associated with nature, grounding, and physical safety. They sit in deliberate contrast to the saturated blues and purples that dominate the wellness app space, which have started to feel clinical by overuse.</p>
+    <p>Illustrations use rounded, approachable characters rather than polished stock photography. The botanical visual headers in the Toolbox feel handmade, reinforcing the sense that someone who cares built this, not a growth team chasing retention metrics. Typography is soft and unhurried throughout. Generous whitespace in a wellness app is not wasted space. It is breathing room.</p>
+  </div>
+
+  <div class="case-section">
+    <h3>The Hardest Design Decision</h3>
+    <p>Cutting streak counters and social features was the right call and also the uncomfortable one. These features drive engagement numbers, and removing them means the app cannot compete on those metrics. But research was unambiguous: streaks were the number one reason people abandoned wellness apps. They turned self-care into performance. Calmora cannot do that to Liyema. She already feels behind enough.</p>
+  </div>
+
+  <div class="case-section">
+    <h3>Outcome</h3>
+    <div class="outcome-highlight">
+      <p>Calmora is proof that wellness design does not have to choose between beautiful and genuinely useful. Every decision in the app, from Lora's conversational tone to where the Emergency Contact button lives to the deliberate absence of streaks, reflects a real understanding of who will open this app and what they will need when they do. It was designed for Amahle at 7am and for Liyema at 2am. Both of them deserve something that actually helps.</p>
+    </div>
+    <p style="margin-top:1.5rem; color:var(--muted)">View the live case study: <a href="https://ayandas-portfolio-ui.netlify.app/calmora" target="_blank" style="color:var(--accent3)">ayandas-portfolio-ui.netlify.app/calmora</a></p>
+  </div>
+
+</div>
+</div>
+
+
+<script>
+  // ── Intersection Observer for fade-up animations ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ── Case Study overlay logic ──
+  const closeBtn = document.getElementById('closeBtn');
+
+  function openCase(id) {
+    const overlay = document.getElementById('case-' + id);
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    closeBtn.classList.add('visible');
+    closeBtn.dataset.current = id;
+    overlay.scrollTop = 0;
+  }
+
+  function closeCase() {
+    const id = closeBtn.dataset.current;
+    if (id) {
+      document.getElementById('case-' + id).classList.remove('open');
+    }
+    document.body.style.overflow = '';
+    closeBtn.classList.remove('visible');
+    closeBtn.dataset.current = '';
+  }
+
+  // Close on Escape
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeCase();
+  });
+</script>
+</body>
+</html>
